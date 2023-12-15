@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pms/views/SignUp/splashScreen.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -12,7 +12,6 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   // This widget is the root of application.
@@ -28,5 +27,4 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
     );
   }
-
 }

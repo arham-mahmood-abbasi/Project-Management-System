@@ -40,24 +40,23 @@ class SignUpInController {
 
   // this function returns the Map of user if the user exists
   static Future<Map> Login(Map data) async {
-    Map m = {"error":"error"};
+    Map m = {"error": "error"};
     var url = Uri.parse('${Configuration.apiBaseUrl}login/user');
     try {
       final response = await http.post(url, body: data);
       if (response.statusCode == 200) {
-          var responseData = json.decode(response.body);
-          print(responseData);
-          Map userData = responseData['data'];
-          userData['role'] = responseData['role'];
-          userData['username'] = responseData['userName'];
-          print(userData);
-          return userData;
+        var responseData = json.decode(response.body);
+        print(responseData);
+        Map userData = responseData['data'];
+        userData['role'] = responseData['role'];
+        userData['username'] = responseData['userName'];
+        await SharedService.setLoginDetails(userData);
+        print(userData);
+        return userData;
       }
     } catch (error) {
       print(error);
     }
     return m;
   }
-
-
 }
